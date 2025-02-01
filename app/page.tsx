@@ -1,101 +1,140 @@
-import Image from "next/image";
+import Link from "next/link"
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import "./styles/button-animations.css"
 
 export default function Home() {
+  const trendingAuctions = [
+    {
+      id: 1,
+      title: "Premium Wheat",
+      image:
+        "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8d2hlYXR8ZW58MHx8MHx8fDA%3D",
+      currentBid: 1000,
+      timeRemaining: "2 days",
+    },
+    {
+      id: 2,
+      title: "Organic Rice",
+      image:
+        "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmljZXxlbnwwfHwwfHx8MA%3D%3D",
+      currentBid: 800,
+      timeRemaining: "3 days",
+    },
+    {
+      id: 3,
+      title: "Fresh Corn",
+      image:
+        "https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29ybnxlbnwwfHwwfHx8MA%3D%3D",
+      currentBid: 600,
+      timeRemaining: "1 day",
+    },
+  ]
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <>
+      <section className="relative h-screen flex items-center justify-center">
         <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
+          src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1600&auto=format&fit=crop&q=80"
+          alt="Hero background"
+          layout="fill"
+          objectFit="cover"
+          quality={100}
           priority
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="relative z-10 text-center text-white hero-content max-w-4xl px-4">
+          <div className="mb-8 transform hover:scale-105 transition-transform duration-500">
+            <Image src="/brain-logo.svg" alt="Vikraya Logo" width={100} height={100} className="mx-auto" />
+          </div>
+          <h1 className="text-5xl font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300">
+            Welcome to Vikraya
+          </h1>
+          <p className="mx-auto max-w-[800px] text-xl md:text-2xl mb-12 leading-relaxed text-gray-200">
+            Revolutionizing agricultural trade through blockchain technology. Connect directly with farmers and buyers
+            for transparent, secure, and fair trading.
+          </p>
+          <div className="space-x-6">
+            <Link href="/create-auction">
+              <Button
+                size="lg"
+                className="button-glow bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-lg px-8 py-6"
+              >
+                Create Auction
+              </Button>
+            </Link>
+            <Link href="/auctions">
+              <Button size="lg" variant="outline" className="button-glow border-2 text-lg px-8 py-6">
+                View Auctions
+              </Button>
+            </Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      </section>
+
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
+        <div className="container px-4 md:px-6">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8">Key Features</h2>
+          <div className="grid gap-6 md:grid-cols-3">
+            <Card>
+              <CardHeader>
+                <CardTitle>Transparency</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>All transactions are recorded on the blockchain, ensuring complete transparency.</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>Direct Connection</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Connect directly with buyers or sellers, eliminating intermediaries.</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle>Secure Payments</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p>Smart contracts ensure secure and timely payments for all transactions.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section className="w-full py-12 md:py-24 lg:py-32">
+        <div className="container px-4 md:px-6">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8">
+            Top Trending Auctions
+          </h2>
+          <div className="grid gap-6 md:grid-cols-3">
+            {trendingAuctions.map((auction) => (
+              <Link href={`/auctions/${auction.id}`} key={auction.id}>
+                <Card className="cursor-pointer transition-transform hover:scale-105">
+                  <CardHeader>
+                    <Image
+                      src={auction.image || "/placeholder.svg"}
+                      alt={auction.title}
+                      width={500}
+                      height={300}
+                      className="rounded-t-lg object-cover h-48 w-full"
+                    />
+                    <CardTitle>{auction.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p>Current Highest Bid: ${auction.currentBid}</p>
+                    <p>Time Remaining: {auction.timeRemaining}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  )
 }
+
