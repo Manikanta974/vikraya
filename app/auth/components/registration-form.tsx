@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -7,8 +5,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Label } from "@/components/ui/label"
 
 export function RegistrationForm({ isGoogleSignUp = false }) {
-  const [photo, setPhoto] = useState<File | null>(null)
-
   return (
     <Card>
       <CardHeader>
@@ -39,13 +35,7 @@ export function RegistrationForm({ isGoogleSignUp = false }) {
           </div>
           <div className="space-y-2">
             <Label htmlFor="photo">Profile Photo</Label>
-            <Input
-              id="photo"
-              type="file"
-              accept="image/*"
-              onChange={(e) => setPhoto(e.target.files?.[0] || null)}
-              required
-            />
+            <Input id="photo" type="file" accept="image/*" required />
           </div>
           {!isGoogleSignUp && (
             <>
@@ -71,4 +61,3 @@ export function RegistrationForm({ isGoogleSignUp = false }) {
     </Card>
   )
 }
-
