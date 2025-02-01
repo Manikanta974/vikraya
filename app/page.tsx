@@ -2,7 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import "./styles/button-animations.css"
+import "@/styles/button-animations.css"
 
 export default function Home() {
   const trendingAuctions = [
